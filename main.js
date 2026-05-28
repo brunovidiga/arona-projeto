@@ -176,8 +176,8 @@ class HeroEffect {
             }
             gsap.to(this, {
                 reveal: 1,
-                clickReveal: 0.2,
-                duration: 0.8,
+                clickReveal: 0.15,
+                duration: 0.6,
                 ease: "power2.out",
                 overwrite: "auto"
             });
@@ -194,11 +194,16 @@ class HeroEffect {
                 this.targetMouse.x = (e.touches[0].clientX / window.innerWidth) - 0.5;
                 this.targetMouse.y = -(e.touches[0].clientY / window.innerHeight) + 0.5;
 
-                // If user drags/moves finger significantly, cancel the full-reveal timer (keep it a local lens reveal)
                 const dx = e.touches[0].clientX - touchStartX;
                 const dy = e.touches[0].clientY - touchStartY;
                 if (Math.sqrt(dx * dx + dy * dy) > 15) {
                     clearTimeout(this.touchTimeout);
+                    gsap.to(this, {
+                        clickReveal: 0,
+                        duration: 0.3,
+                        ease: "power2.out",
+                        overwrite: "auto"
+                    });
                 }
             }
         });
