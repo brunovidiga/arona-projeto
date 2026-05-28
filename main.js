@@ -176,8 +176,8 @@ class HeroEffect {
             }
             gsap.to(this, {
                 reveal: 1,
-                clickReveal: 0.5,
-                duration: 0.6,
+                clickReveal: 0.2,
+                duration: 0.8,
                 ease: "power2.out",
                 overwrite: "auto"
             });
