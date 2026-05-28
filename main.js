@@ -174,12 +174,18 @@ class HeroEffect {
                 touchStartX = e.touches[0].clientX;
                 touchStartY = e.touches[0].clientY;
             }
-            gsap.to(this, { reveal: 1, duration: 1.2, ease: "power2.out", overwrite: "auto" });
+            gsap.to(this, {
+                reveal: 1,
+                clickReveal: 0.5,
+                duration: 0.6,
+                ease: "power2.out",
+                overwrite: "auto"
+            });
 
             // Start timer for mobile full reveal (long press / holding down)
             clearTimeout(this.touchTimeout);
             this.touchTimeout = setTimeout(() => {
-                gsap.to(this, { clickReveal: 1, duration: 1.5, ease: "power3.out", overwrite: "auto" });
+                gsap.to(this, { clickReveal: 1, duration: 0.8, ease: "power3.out", overwrite: "auto" });
             }, 350); // 350ms holding down triggers full reveal
         });
 
